@@ -1,51 +1,207 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-/* BUTTON FADE */
+/* ----------------- GLOBAL ----------------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  scroll-behavior: smooth;
+  transition: background 0.3s, color 0.3s;
+  background: #fff; /* default light theme */
+  color: #111;      /* default text color for light theme */
+}
+
+/* ----------------- NAVBAR ----------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8); /* light theme */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  color: #111; /* dark logo for light theme */
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.primary-dot {
+  color: #ffcc00;
+}
+
+/* Desktop nav items */
+.nav-items {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-item {
+  color: #111; /* visible on light theme */
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s;
+}
+
+.nav-item:hover {
+  color: #ffcc00; /* hover highlight */
+}
+
+/* underline animation */
+.nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #ffcc00;
+  transition: width 0.3s;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  width: 100%;
+}
+
+/* ----------------- MOBILE ----------------- */
+.mobile-menu-btn {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #111; /* visible on light theme */
+  cursor: pointer;
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.95); /* light theme */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  z-index: 900;
+}
+
+.mobile-nav-item {
+  color: #111; /* visible on light theme */
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+.mobile-nav-item:hover,
+.mobile-nav-item.active {
+  color: #ffcc00;
+}
+
+@media (max-width: 768px) {
+  .nav-items {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: block;
+  }
+}
+
+/* ----------------- THEME TOGGLE ----------------- */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #eee; /* light theme */
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2000; /* above mobile menu */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ----------------- DARK MODE ----------------- */
+html.dark {
+  background: #111;
+  color: white;
+}
+
+html.dark .navbar {
+  background: rgba(20,20,20,0.8);
+}
+
+html.dark .logo {
+  color: white;
+}
+
+html.dark .nav-item {
+  color: #aaa;
+}
+
+html.dark .nav-item:hover {
+  color: white;
+}
+
+html.dark .mobile-menu {
+  background: rgba(0,0,0,0.95);
+}
+
+html.dark .mobile-nav-item {
+  color: #ccc;
+}
+
+html.dark .mobile-nav-item:hover,
+html.dark .mobile-nav-item.active {
+  color: #ffcc00;
+}
+
+html.dark .theme-toggle {
+  background: #333;
+  color: white;
+}
+
+/* Optional smooth fade animation for ThemeToggle */
 @keyframes fade {
-  from {
-    opacity: 0;
-    transform: scale(0.85);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .animate-fade {
-  animation: fade 0.6s ease forwards;
+  animation: fade 0.3s ease-in-out;
 }
 
-/* ICON ROTATION */
-@keyframes rotateIcon {
-  0% {
-    transform: rotate(-180deg);
-    opacity: 0.4;
-  }
-  100% {
-    transform: rotate(0deg);
-    opacity: 1;
-  }
+/* ----------------- MIN HEIGHT FOR SCREEN ----------------- */
+.min-h-screen {
+  min-height: 100vh;
+}
+/* ----------------- SECTIONS ----------------- */
+.section {
+  padding: 6rem 2rem;
+  background: #fff; /* light theme */
+  color: #111;
+  transition: background 0.3s, color 0.3s;
 }
 
-.rotate-animate {
-  animation: rotateIcon 0.6s ease;
+/* Dark mode for sections */
+html.dark .section {
+  background: #111; /* dark theme */
+  color: white;
 }
-.rotate-hover:hover {
-  animation: rotateIcon 0.6s ease forwards, spin 1s linear infinite;
+html, body, .section {
+  transition: background 0.3s ease, color 0.3s ease;
 }
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* index.css */
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  transition: background-color 0.5s, color 0.5s;
-}
-
-

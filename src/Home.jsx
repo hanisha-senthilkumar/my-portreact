@@ -1,23 +1,26 @@
-import ThemeToggle from "./Components/ThemeToggle"
+import Navbar from "./Components/Navbar";
+
 const Home = () => {
-    return(
-        <div className="min-h-screen">
-            {/*ThemeToggle*/}
-<div className="bg-white dark:bg-gray-900 text-black dark:text-white min-h-screen transition-colors duration-500">
-  <ThemeToggle />
-  {/* Rest of your portfolio content */}
-</div>
+  return (
+    <div className="page-container">
+      <Navbar />
 
+      {/* Hero Section */}
+      <section id="home" className="section">
+        
+      </section>
 
+      <section id="about" className="section">
+        
+      </section>
 
-           
-            {/*Navbar*/}
+      <section id="projects" className="section">
+        
+      </section>
 
-            {/*Background Effect */}
+      {/* Add other sections */}
+    </div>
+  );
+};
 
-            {/*Hero Section*/}
-
-        </div>
-    )
-}
-export default Home
+export default Home;
