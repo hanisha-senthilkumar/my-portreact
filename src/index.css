@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* BUTTON FADE */
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade {
+  animation: fade 0.6s ease forwards;
+}
+
+/* ICON ROTATION */
+@keyframes rotateIcon {
+  0% {
+    transform: rotate(-180deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.rotate-animate {
+  animation: rotateIcon 0.6s ease;
+}
+.rotate-hover:hover {
+  animation: rotateIcon 0.6s ease forwards, spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* index.css */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+
